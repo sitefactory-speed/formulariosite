@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações para seu Site Profissional</title>
+    <style>
+        :root {
+            /* Paleta de cores neutra e profissional (Área da Saúde) */
+            --bg-color: #f4f6f5;
+            --card-bg: #ffffff;
+            --primary-color: #4a7c59; /* Verde sálvia escuro/profissional */
+            --primary-hover: #3b6347;
+            --secondary-color: #e8f5e9;
+            --text-color: #333333;
+            --text-light: #666666;
+            --border-color: #e0e0e0;
+            --input-bg: #fafafa;
+            --danger-color: #d32f2f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px 15px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* Cabeçalho */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        /* Seções */
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .section:last-of-type {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Formulários e Inputs */
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #444;
+            font-size: 0.95rem;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--input-bg);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus {
+            border-color: var(--primary-color);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Itens Dinâmicos (Serviços e Materiais) */
+        .dynamic-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .dynamic-item {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 8px;
+            position: relative;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .dynamic-item input {
+            margin-bottom: 10px;
+        }
+        
+        .dynamic-item input:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .btn-remove {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: transparent;
+            color: var(--danger-color);
+            border: none;
+            font-size: 0.8rem;
+            cursor: pointer;
+            padding: 5px;
+            font-weight: bold;
+        }
+
+        .btn-add {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border: 1px dashed var(--primary-color);
+            padding: 10px;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-add:hover {
+            background-color: #dceedd;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Checkboxes e Radios */
+        .checkbox-group, .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"], input[type="radio"] {
+            transform: scale(1.2);
+            cursor: pointer;
+            accent-color: var(--primary-color);
+        }
+
+        /* Botão */
+        .btn-container {
+            margin-top: 20px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .note {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* Responsividade Mobile-First padrão */
+        @media (max-width: 400px) {
+            h1 { font-size: 1.3rem; }
+            .container { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 1️⃣ Cabeçalho -->
+        <header>
+            <h1>Informações para criação do seu site profissional</h1>
+            <p class="subtitle">Preencha com calma. Essas informações vão me ajudar a criar seu site do jeito certo.</p>
+        </header>
+
+        <form id="infoForm">
+            
+            <!-- 2️⃣ Seção — Identidade profissional -->
+            <div class="section">
+                <h2>Identidade profissional</h2>
+                
+                <div class="input-group">
+                    <label for="nome">Nome completo</label>
+                    <input type="text" id="nome" placeholder="Seu nome">
+                </div>
+
+                <div class="input-group">
+                    <label for="nomeApresentacao">Como deseja ser apresentada no site</label>
+                    <input type="text" id="nomeApresentacao" placeholder="Ex: Dra. Ana Silva">
+                </div>
+
+                <div class="input-group">
+                    <label for="profissao">Profissão</label>
+                    <input type="text" id="profissao" placeholder="Ex: Terapeuta Ocupacional">
+                </div>
+
+                <div class="input-group">
+                    <label>Atende:</label>
+                    <div class="radio-group">
+                        <label class="option-item">
+                            <input type="radio" name="atendimento" value="Online"> Online
+                        </label>
+                        <label class="option-item">
+                            <input type="radio" name="atendimento" value="Presencial"> Presencial
+                        </label>
+                        <label class="option-item">
+                            <input type="radio" name="atendimento" value="Ambos" checked> Ambos
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3️⃣ Seção — Serviços e atendimentos (DINÂMICO) -->
+            <div class="section">
+                <h2>Serviços e atendimentos</h2>
+                <label>Quais serviços você oferece?</label>
+                <div id="container-servicos" class="dynamic-list">
+                    <!-- Itens serão adicionados via JS -->
+                </div>
+                <button type="button" class="btn-add" onclick="adicionarServico()">+ Adicionar Serviço</button>
+
+                <div class="input-group" style="margin-top: 20px;">
+                    <label for="destaqueServico">Qual serviço deve ter mais destaque no site?</label>
+                    <input type="text" id="destaqueServico" placeholder="Ex: Avaliação Inicial">
+                </div>
+            </div>
+
+            <!-- 4️⃣ Seção — Público atendido -->
+            <div class="section">
+                <h2>Público atendido</h2>
+                <div class="checkbox-group">
+                    <label class="option-item">
+                        <input type="checkbox" name="publico" value="Crianças"> Crianças
+                    </label>
+                    <label class="option-item">
+                        <input type="checkbox" name="publico" value="Adolescentes"> Adolescentes
+                    </label>
+                    <label class="option-item">
+                        <input type="checkbox" name="publico" value="Adultos"> Adultos
+                    </label>
+                    <label class="option-item">
+                        <input type="checkbox" name="publico" value="Famílias / Cuidadores"> Famílias / Cuidadores
+                    </label>
+                    <div class="input-group" style="margin-bottom: 0;">
+                        <input type="text" id="publicoOutro" placeholder="Outro (digite aqui)" style="margin-top: 5px;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5️⃣ Seção — Materiais, cursos ou produtos digitais (DINÂMICO) -->
+            <div class="section">
+                <h2>Materiais, cursos ou produtos digitais</h2>
+                
+                <div class="input-group">
+                    <label>Você vende algum material digital?</label>
+                    <div class="radio-group">
+                        <label class="option-item">
+                            <input type="radio" name="vendeMaterial" value="Sim" onclick="toggleMateriais(true)"> Sim
+                        </label>
+                        <label class="option-item">
+                            <input type="radio" name="vendeMaterial" value="Não" checked onclick="toggleMateriais(false)"> Não
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Área Dinâmica de Materiais (Oculta se "Não") -->
+                <div id="area-materiais" style="display: none;">
+                    <label>Liste seus produtos (Material + Link)</label>
+                    <div id="container-materiais" class="dynamic-list">
+                        <!-- Itens serão adicionados via JS -->
+                    </div>
+                    <button type="button" class="btn-add" onclick="adicionarMaterial()">+ Adicionar Produto/Material</button>
+                    <p class="note">Clique em adicionar para incluir quantos produtos quiser.</p>
+                </div>
+            </div>
+
+            <!-- 6️⃣ Seção — Contato e redes sociais -->
+            <div class="section">
+                <h2>Contato e redes sociais</h2>
+                
+                <div class="input-group">
+                    <label for="whatsapp">Seu WhatsApp (com DDD)</label>
+                    <input type="tel" id="whatsapp" placeholder="(00) 00000-0000">
+                </div>
+
+                <div class="input-group">
+                    <label for="instagram">Instagram (@)</label>
+                    <input type="text" id="instagram" placeholder="@seuusuario">
+                </div>
+
+                <div class="input-group">
+                    <label for="email">E-mail (opcional)</label>
+                    <input type="email" id="email" placeholder="seuemail@exemplo.com">
+                </div>
+            </div>
+
+            <!-- 7️⃣ Seção — Ação principal do site -->
+            <div class="section">
+                <h2>Ação principal do site</h2>
+                
+                <div class="input-group">
+                    <label for="acaoPrincipal">O que você mais quer que a pessoa faça ao entrar no site?</label>
+                    <input type="text" id="acaoPrincipal" placeholder="Ex: agendar atendimento, conhecer serviços...">
+                </div>
+            </div>
+
+            <!-- 8️⃣ Seção — Apresentação pessoal -->
+            <div class="section">
+                <h2>Apresentação pessoal</h2>
+                
+                <div class="input-group">
+                    <label for="bioTexto">Texto curto de apresentação (opcional)</label>
+                    <textarea id="bioTexto" placeholder="Escreva um pouco sobre você..."></textarea>
+                </div>
+
+                <div class="checkbox-group">
+                    <label class="option-item">
+                        <input type="checkbox" id="criarBioPorMim"> Prefiro que você crie esse texto por mim
+                    </label>
+                </div>
+            </div>
+
+            <!-- 9️⃣ Botão final -->
+            <div class="btn-container">
+                <button type="button" class="btn-submit" onclick="enviarWhatsApp()">
+                    Enviar informações pelo WhatsApp
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        // CONFIGURAÇÃO: Número do desenvolvedor (com DDI 55 + DDD + Numero)
+        const NUMERO_DESTINO = "5586994843759"; 
+
+        // --- Lógica de Campos Dinâmicos ---
+
+        // Adicionar Serviço
+        function adicionarServico() {
+            const container = document.getElementById('container-servicos');
+            const div = document.createElement('div');
+            div.className = 'dynamic-item servico-item';
+            div.innerHTML = `
+                <input type="text" class="nome-servico" placeholder="Nome do Serviço (ex: Terapia Sensorial)">
+                <button type="button" class="btn-remove" onclick="removerItem(this)">Remover</button>
+            `;
+            container.appendChild(div);
+        }
+
+        // Adicionar Material (Nome + Link)
+        function adicionarMaterial() {
+            const container = document.getElementById('container-materiais');
+            const div = document.createElement('div');
+            div.className = 'dynamic-item material-item';
+            div.innerHTML = `
+                <input type="text" class="nome-material" placeholder="Nome do Material/Curso">
+                <input type="text" class="link-material" placeholder="Link do Checkout/Pagamento">
+                <button type="button" class="btn-remove" onclick="removerItem(this)">Remover</button>
+            `;
+            container.appendChild(div);
+        }
+
+        function removerItem(btn) {
+            btn.parentElement.remove();
+        }
+
+        function toggleMateriais(show) {
+            const area = document.getElementById('area-materiais');
+            area.style.display = show ? 'block' : 'none';
+            // Se mostrar e estiver vazio, adiciona um item automaticamente
+            if (show && document.querySelectorAll('.material-item').length === 0) {
+                adicionarMaterial();
+            }
+        }
+
+        // Inicializar com 1 campo de serviço
+        window.onload = function() {
+            adicionarServico();
+        };
+
+        // --- Envio WhatsApp ---
+
+        function enviarWhatsApp() {
+            // 1. Identidade
+            const nome = document.getElementById('nome').value;
+            const apresentacao = document.getElementById('nomeApresentacao').value;
+            const profissao = document.getElementById('profissao').value;
+            const atendimento = document.querySelector('input[name="atendimento"]:checked')?.value || "Não informado";
+            
+            // 2. Serviços (Dinâmico)
+            let servicosTexto = "";
+            document.querySelectorAll('.servico-item').forEach((item, index) => {
+                const nomeSv = item.querySelector('.nome-servico').value;
+                if(nomeSv) servicosTexto += `- ${nomeSv}\n`;
+            });
+            if(!servicosTexto) servicosTexto = "Nenhum serviço listado.";
+            
+            const destaque = document.getElementById('destaqueServico').value;
+
+            // 3. Público
+            let publicos = [];
+            document.querySelectorAll('input[name="publico"]:checked').forEach(el => publicos.push(el.value));
+            const publicoOutro = document.getElementById('publicoOutro').value;
+            if (publicoOutro) publicos.push(`Outro: ${publicoOutro}`);
+            const publicoFinal = publicos.length > 0 ? publicos.join(', ') : "Não selecionado";
+
+            // 4. Materiais (Dinâmico)
+            const vendeMaterial = document.querySelector('input[name="vendeMaterial"]:checked')?.value || "Não";
+            let materiaisTexto = "";
+            if (vendeMaterial === "Sim") {
+                document.querySelectorAll('.material-item').forEach((item, index) => {
+                    const nomeMat = item.querySelector('.nome-material').value;
+                    const linkMat = item.querySelector('.link-material').value;
+                    if(nomeMat || linkMat) {
+                        materiaisTexto += `Produto ${index + 1}: ${nomeMat}\nLink: ${linkMat}\n\n`;
+                    }
+                });
+            } else {
+                materiaisTexto = "Não vende materiais digitais.";
+            }
+
+            // 5. Contato
+            const whatsappCli = document.getElementById('whatsapp').value;
+            const instagram = document.getElementById('instagram').value;
+            const email = document.getElementById('email').value;
+
+            // 6. Ação e Bio
+            const acao = document.getElementById('acaoPrincipal').value;
+            const bio = document.getElementById('bioTexto').value;
+            const criarBio = document.getElementById('criarBioPorMim').checked ? "Sim, prefiro que crie por mim." : "Não.";
+
+            // --- Montagem da Mensagem ---
+            let msg = `*--- 📝 INFORMAÇÕES PARA O SITE ---*\n\n`;
+            
+            msg += `*1. IDENTIDADE*\n`;
+            msg += `Nome: ${nome}\n`;
+            msg += `Apresentação: ${apresentacao}\n`;
+            msg += `Profissão: ${profissao}\n`;
+            msg += `Atende: ${atendimento}\n\n`;
+
+            msg += `*2. SERVIÇOS*\n`;
+            msg += `${servicosTexto}\n`;
+            msg += `*Destaque:* ${destaque}\n\n`;
+
+            msg += `*3. PÚBLICO*\n`;
+            msg += `Público Alvo: ${publicoFinal}\n\n`;
+
+            msg += `*4. MATERIAIS*\n`;
+            msg += `Vende? ${vendeMaterial}\n\n`;
+            if (vendeMaterial === "Sim") {
+                msg += `${materiaisTexto}`;
+            }
+
+            msg += `*5. CONTATOS*\n`;
+            msg += `WhatsApp: ${whatsappCli}\n`;
+            msg += `Instagram: ${instagram}\n`;
+            msg += `E-mail: ${email}\n\n`;
+
+            msg += `*6. AÇÃO PRINCIPAL*\n`;
+            msg += `Objetivo: ${acao}\n\n`;
+
+            msg += `*7. APRESENTAÇÃO*\n`;
+            msg += `Bio: ${bio}\n`;
+            msg += `Criar texto por mim? ${criarBio}`;
+
+            // Codificando e Enviando
+            const textoCodificado = encodeURIComponent(msg);
+            const linkFinal = `https://wa.me/${NUMERO_DESTINO}?text=${textoCodificado}`;
+
+            window.open(linkFinal, '_blank');
+        }
+    </script>
+</body>
+</html>
